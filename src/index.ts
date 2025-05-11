@@ -1,12 +1,3 @@
-// @ts-check
-
-// Define the Review interface
-interface Review {
-  name: string;
-  stars: number;
-  loyaltyUser: boolean;
-  date: string;
-}
 
 const reviewTotalDisplay = document.querySelector("#reviews") as HTMLElement;
 const reviews = [
@@ -29,5 +20,14 @@ const reviews = [
     date: "27-03-2021",
   },
 ];
-function showReviewTotal (value : number) {    reviewTotalDisplay.innerHTML = value.toString()}showReviewTotal(reviews.length)
-
+function showReviewTotal(value: number, reviewer: string, isLoyalty: boolean) {
+  const iconDisplay = isLoyalty ? "⭐" : "";
+  reviewTotalDisplay.innerHTML =
+    "review total " +
+    value.toString() +
+    "| last reviewed by " +
+    reviewer +
+    " " +
+    iconDisplay;
+}
+showReviewTotal(reviews.length, reviews[0].name, reviews[0].loyaltyUser);
